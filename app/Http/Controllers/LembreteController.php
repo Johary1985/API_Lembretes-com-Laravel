@@ -12,9 +12,8 @@ class LembreteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+    
         $lembretes = Lembretes::all();
         return \response($lembretes );
     }
@@ -25,8 +24,8 @@ class LembreteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
        $request->validate ([
            'usuario' => 'required',
            'titulo' => 'required',
@@ -37,10 +36,6 @@ class LembreteController extends Controller
        $lembretes = Lembretes::create($request->all());
 
        return \response($lembretes);
-
-        // $lembretes = new Lembretes;
-        // $lembretes->usuario = $request->input('usuario');
-        // $lembretes->save();
     }
 
     /**
@@ -49,8 +44,7 @@ class LembreteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
        
         $lembretes = Lembretes:: findOrFail($id);
         return \response($lembretes);
@@ -63,8 +57,8 @@ class LembreteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+
         $lembretes = Lembretes:: findOrFail($id)->
         update($request->all());
         return \response($lembretes);
@@ -76,10 +70,9 @@ class LembreteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        Lembretes::destroy($id);
+    public function destroy($id) {
 
+        Lembretes::destroy($id);
         return \response(content: "Tarefa apagada");
     }
 }
