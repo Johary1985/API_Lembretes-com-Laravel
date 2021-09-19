@@ -19,6 +19,7 @@ class CreateLembretesTable extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->integer('repetir');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

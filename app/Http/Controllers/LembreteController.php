@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Lembretes;
 
 class LembreteController extends Controller
 {
@@ -14,16 +15,8 @@ class LembreteController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $lembretes = Lembretes::all();
+        return \response($lembretes );
     }
 
     /**
@@ -34,7 +27,20 @@ class LembreteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate ([
+           'usuario' => 'required',
+           'titulo' => 'required',
+           'descricao' => 'required',
+           'repetir' => 'required',
+       ]);
+
+       $lembretes = Lembretes::create($request->all());
+
+       return \response($lembretes);
+
+        // $lembretes = new Lembretes;
+        // $lembretes->usuario = $request->input('usuario');
+        // $lembretes->save();
     }
 
     /**
@@ -45,18 +51,9 @@ class LembreteController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+       
+        $lembretes = Lembretes:: findOrFail($id);
+        return \response($lembretes);
     }
 
     /**
@@ -68,7 +65,9 @@ class LembreteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lembretes = Lembretes:: findOrFail($id)->
+        update($request->all());
+        return \response($lembretes);
     }
 
     /**
@@ -79,6 +78,8 @@ class LembreteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lembretes::destroy($id);
+
+        return \response(content: "Tarefa apagada");
     }
 }
