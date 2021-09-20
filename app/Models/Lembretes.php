@@ -9,11 +9,13 @@ use Carbon\Carbon;
 
 class Lembretes extends Model {
 
+    /* Uso do Softdelete para manter os dados na BD */
     use SoftDeletes;
     protected $dates = ['deleted_at']; 
 
     use HasFactory;
 
+    /* Modelo da tabela */
     protected $fillable = [
         'usuario', 
         'descricao', 

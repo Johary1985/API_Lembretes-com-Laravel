@@ -9,6 +9,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+/* Enlace do Controller */
 
 Route::resource('lembretes','App\Http\Controllers\LembreteController');
 

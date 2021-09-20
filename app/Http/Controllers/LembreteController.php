@@ -6,25 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Lembretes;
 use Carbon\Carbon;
 
-class LembreteController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+class LembreteController extends Controller {
+
+    /* Chamar todos os usuarios */
+
     public function index() {
     
         $lembretes = Lembretes::all();
         return \response($lembretes );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /* Salva todos os usuarios e valida os campos */
+
     public function store(Request $request) {
 
        $request->validate ([
@@ -39,25 +32,16 @@ class LembreteController extends Controller
        return \response($lembretes);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Mostra os usuarios pelo ID */
+
     public function show($id) {
        
         $lembretes = Lembretes:: findOrFail($id);
         return \response($lembretes);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Atualiza os usuarios pelo ID */
+
     public function update(Request $request, $id) {
 
         $lembretes = Lembretes:: findOrFail($id)->
@@ -65,12 +49,8 @@ class LembreteController extends Controller
         return \response($lembretes);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Apaga um usuario pelo ID (o usuario fica salvo na BD devido ao Softdelete) */
+    
     public function destroy($id) {
 
         Lembretes::destroy($id);
