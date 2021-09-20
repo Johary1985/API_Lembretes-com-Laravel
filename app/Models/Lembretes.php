@@ -20,6 +20,8 @@ class Lembretes extends Model {
         'usuario', 
         'descricao', 
         'titulo', 
-        'repetir'
+        'repetir',
+        'inicio',
+        'fim',
     ];
 }

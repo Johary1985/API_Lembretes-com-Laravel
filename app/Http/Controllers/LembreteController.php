@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class LembreteController extends Controller {
 
-    /* Chamar todos os usuarios */
+        /* Chamar todos os usuarios */
 
     public function index() {
     
@@ -16,15 +16,18 @@ class LembreteController extends Controller {
         return \response($lembretes );
     }
 
-    /* Salva todos os usuarios e valida os campos */
+    /* Salvar todos os usuarios e validar os campos */
 
     public function store(Request $request) {
 
        $request->validate ([
+           
            'usuario' => 'required',
            'titulo' => 'required',
            'descricao' => 'required',
            'repetir' => 'required',
+           'inicio' => 'required',
+            'fim' => 'required',
        ]);
 
        $lembretes = Lembretes::create($request->all());
@@ -50,7 +53,7 @@ class LembreteController extends Controller {
     }
 
     /* Apaga um usuario pelo ID (o usuario fica salvo na BD devido ao Softdelete) */
-    
+
     public function destroy($id) {
 
         Lembretes::destroy($id);
