@@ -11,8 +11,8 @@ class CreateLembretesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
+        
         Schema::create('lembretes', function (Blueprint $table) {
             $table->id();
             $table->string('usuario');
@@ -29,8 +29,8 @@ class CreateLembretesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
+
         Schema::dropIfExists('lembretes');
     }
 }
