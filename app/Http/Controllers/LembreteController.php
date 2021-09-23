@@ -26,8 +26,8 @@ class LembreteController extends Controller {
            'titulo' => 'required',
            'descricao' => 'required',
            'repetir' => 'required',
-           'inicio' => 'required',
-            'fim' => 'required',
+           'data_evento' => 'required',
+           'cerrar_evento' => 'required',
        ]);
 
        $lembretes = Lembretes::create($request->all());

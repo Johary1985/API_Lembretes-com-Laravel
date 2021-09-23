@@ -21,7 +21,7 @@ class Lembretes extends Model {
         'descricao', 
         'titulo', 
         'repetir',
-        'inicio',
-        'fim',
+        'data_evento',
+        'cerrar_evento',
     ];
 }

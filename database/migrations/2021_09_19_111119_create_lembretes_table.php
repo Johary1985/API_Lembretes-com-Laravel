@@ -18,8 +18,8 @@ class CreateLembretesTable extends Migration {
             $table->integer('repetir');
             $table->softDeletes();
             $table->timestamps();
-            $table->dateTime('inicio');
-            $table->dateTime('fim');
+            $table->dateTime('data_evento');
+            $table->boolean('cerrar_evento');
         });
     }
 
